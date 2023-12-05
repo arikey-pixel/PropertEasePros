@@ -21,6 +21,14 @@
                 <input class="search-box" type="text" placeholder="Enter Keyword...">
                 <button class="search-button" type="submit">Search</button>
             </div>
+            <div class="search-container">
+                <label for="sort-home" style="color: aliceblue;" style="margin-right: 10px;"> |||  FILTER BY:</label>
+                <select class="search-button" id="sort-home" name="sort-home">
+                    <option value="price" onchange="sortHomes(this.value)">Price</option>
+                    <option value="walkability" onchange="sortHomes(this.value)">Walkability Score</option>
+                    <option value="sqFt" onchange="sortHomes(this.value)">Square Footage</option>
+                  </select>
+            </div>
         </div>
         <div class="property-container">
             <div class="property-card">
