@@ -66,6 +66,39 @@ body{
     display: inline-flex;
     justify-content: space-between;
 }
+.wl-pic {
+    height: 100px;
+    width: 200px;
+    display: block;
+    float: right;
+}
+.rem-wl {
+    height: 50px;
+    width: 90px;
+    padding-top: 10px;
+    margin-top: 20px;
+    display: block;
+    float: right;
+    font-weight: bolder;
+    border-radius: 10px;
+    color: brown;
+}
+.info-wl {
+    height: 50px;
+    width: 200px;
+    padding-top: 10px;
+    margin-top: 20px;
+    display: block;
+    float: right;
+    margin-right: 40px;
+    font-weight: bold;
+}
+.property-wl-card {
+    border: 2px solid black;
+    width: 1650px;
+    height: 100px;  
+    display: inline-block;
+}
 .property-card{
     border: 2px solid black;
     width: 460px;
