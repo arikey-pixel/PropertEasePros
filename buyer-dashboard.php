@@ -13,7 +13,7 @@ $username = $_SESSION["username"];
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Seller Dashboard</title>
+        <title>Buyer Dashboard</title>
         <link href="buyer-dashboard.css" type="text/css" rel="stylesheet">
     </head>
     <body>
@@ -27,11 +27,12 @@ $username = $_SESSION["username"];
         </div>
         <a href="logout.php" class="logout-button">Logout</a>
         <div class="link-container">
+            <a class="wishlist-link" href="buyer-dashboard.php">Dashboard</a>
             <a class="wishlist-link" href="wishlist.html">WishList</a>
         </div>
         <div class="container">
             <div class="search-container">
-                <input class="search-box" type="text" placeholder="Enter Keyword...">
+                <input class="search-box" id="searchInput" type="text" placeholder="Enter Keyword...">
                 <button class="search-button" type="submit">Search</button>
             </div>
             <div class="search-container">
@@ -43,33 +44,8 @@ $username = $_SESSION["username"];
                 </select>
             </div>
         </div>
-        <div class="property-container">
-            <div class="property-card">
-                <img src="house_1.jpg">
-                <h3>Cool House</h3>
-                <div class="house-info">
-                    <h4>$570,000</h4>
-                    <button onclick="AddToWishlist">+</button>
-                </div>
-            </div>
-            <div class="property-card">
-                <img src="house_2.jpg">
-                <h3>Cool House2</h3>
-                <div class="house-info">
-                    <h4>$570,000</h4>
-                    <button onclick="AddToWishlist">+</button>
-                </div>
-            </div>
-            <div class="property-card">
-                <img src="house_3.jpg">
-                <h3>Cool House3</h3>
-                <div class="house-info">
-                    <h4>$570,000</h4>
-                    <button onclick="AddToWishlist">+</button>
-                </div>
-            </div>
-            <!-- Additional property cards can be added here -->
-        </div>
+        <div class="property-container"></div>
+        <script src = "buyer-dashboard.js"></script>   
     </body>
 </html>
 
