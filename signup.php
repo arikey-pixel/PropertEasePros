@@ -21,9 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirm_pass = $_POST["confirm-password"];
 
     if ($pass === $confirm_pass) {
+        // Hash the password before storing it
+        $hashed_pass = password_hash($pass, PASSWORD_DEFAULT);
+
         $sql = "INSERT INTO user (username, email, password, first_name, last_name, user_type) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $user, $email, $pass, $firstName, $lastName, $userType);
+        // Store the hashed password instead of the plain one
+        $stmt->bind_param("ssssss", $user, $email, $hashed_pass, $firstName, $lastName, $userType);
         $stmt->execute();
 
         header("Location: login.html");

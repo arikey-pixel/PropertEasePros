@@ -9,10 +9,8 @@ $username = "mharis2";
 $password = "mharis2";
 $dbname = "mharis2";
 
-// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -21,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_POST["username"];
     $pass = $_POST["password"];
 
-    // Modified SQL to fetch user_type along with other details
     $sql = "SELECT id, username, password, user_type FROM user WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $user);
@@ -31,11 +28,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->num_rows > 0) {
         $stmt->fetch();
-        if ($pass === $stored_pass) {
+        // Use password_verify to check the password
+        if (password_verify($pass, $stored_pass)) {
             $_SESSION["loggedin"] = true;
             $_SESSION["user_id"] = $id;
             $_SESSION["username"] = $username;
-            $_SESSION["user_type"] = $userType; // Store user type in session
+            $_SESSION["user_type"] = $userType;
 
             // Redirect based on user type
             if ($userType === 'buyer') {
@@ -43,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } else if ($userType === 'seller') {
                 header("Location: seller_dash.php");
             } else {
-                // Handle unexpected user type
                 header("Location: login.html?error=invalidusertype");
             }
             exit;
